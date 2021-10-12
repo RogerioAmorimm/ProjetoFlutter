@@ -4,9 +4,12 @@ import 'package:connectivity/connectivity.dart';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/native_imp.dart';
+import 'package:projetoflutter/utils/http/interceptador/interceptador_dio.dart';
 
 class ClientHttp extends DioForNative {
-  ClientHttp([BaseOptions? options]) : super(options);
+  ClientHttp([BaseOptions? options]) : super(options) {
+    interceptors.add(InterceptadorDio());
+  }
 
   static Future<ClientHttp> getClient() async =>
       Connectivity().checkConnectivity().then((connectivityResult) {
