@@ -12,14 +12,14 @@ mixin _$LoginController on _LoginControllerBase, Store {
   final _$logarAsyncAction = AsyncAction('_LoginControllerBase.logar');
 
   @override
-  Future<String> logar(LoginEntity loginData) {
+  Future<String> logar(LoginData loginData) {
     return _$logarAsyncAction.run(() => super.logar(loginData));
   }
 
   final _$logadoAsyncAction = AsyncAction('_LoginControllerBase.logado');
 
   @override
-  Future<String> logado(LoginEntity loginData) {
+  Future<String> logado(LoginData loginData) {
     return _$logadoAsyncAction.run(() => super.logado(loginData));
   }
 

@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:dio/native_imp.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_login/flutter_login.dart';
 import 'package:projetoflutter/core/login/controller/login_controller.dart';
-import 'package:projetoflutter/core/login/entity/login_entity.dart';
 import 'package:projetoflutter/core/usuario/controller/usuario_controller.dart';
 import 'package:projetoflutter/core/usuario/entity/usuario_entity.dart';
 import 'package:projetoflutter/ioc/service_locator.dart';
@@ -52,7 +52,7 @@ class InterceptadorDio extends InterceptorsWrapper {
 
         final loginController = locator<LoginController>();
         return loginController
-            .logar(LoginEntity(nome: usuario.usuario, senha: usuario.senha))
+            .logar(LoginData(name: usuario.usuario, password: usuario.senha))
             .then(
           (result) {
             final _newToken = usuario.token;
