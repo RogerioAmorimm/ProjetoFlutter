@@ -38,4 +38,11 @@ class UsuarioEntity {
     await SharedPreferenceUtil.setString(Constants.spUsuario, usuario);
     await SharedPreferenceUtil.setString(Constants.spSenha, senha);
   }
+
+  Future limparToken() async {
+    await SharedPreferenceUtil.setString(Constants.spUsuario, '');
+    await SharedPreferenceUtil.setString(Constants.spSenha, '');
+    await SharedPreferenceUtil.setString(Constants.spToken, '');
+    await SharedPreferenceUtil.setInt(Constants.spId, 0);
+  }
 }
