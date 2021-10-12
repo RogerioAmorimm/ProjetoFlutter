@@ -5,6 +5,7 @@ class Constants {
   static const String spId = '';
   static const String spUsuario = '';
   static const String spSenha = '';
+  static const String spNome = '';
   static const String mensagemErroInterno = '';
   static const MaterialColor primaria = MaterialColor(0xFF0065AD, {
     50: Color(0xFFE0EDF5),

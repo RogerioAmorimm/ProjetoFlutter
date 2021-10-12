@@ -1,15 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:projetoflutter/core/login/controller/login_controller.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:projetoflutter/core/login/page/login_page.dart';
+import 'package:projetoflutter/core/usuario/entity/usuario_entity.dart';
 import 'package:projetoflutter/ioc/service_locator.dart';
+import 'package:projetoflutter/utils/constants.dart';
+import 'package:projetoflutter/utils/routers/routers.dart';
+import 'package:projetoflutter/utils/sharedPreference/shared_preferences_util.dart';
 import 'components/temas/tema_padrao.dart';
 import 'core/login/page/login_page.dart';
+import 'core/usuario/controller/usuario_controller.dart';
 
-void main() {
+Future<void> main() async {
+  String rotaInicial = LoginPage.routeName;
+  await dotenv.load(fileName: '.env');
   setUpLocator();
-  runApp(MyApp());
+  if (await UsuarioEntity.ehUsuarioLogadoLocalmente()) {
+    await locator<UsuarioController>().setUsuarioLogado(
+      UsuarioEntity(
+        token: await SharedPreferenceUtil.getString(Constants.spToken),
+        id: await SharedPreferenceUtil.getInt(Constants.spId),
+        senha: await SharedPreferenceUtil.getString(Constants.spSenha),
+        usuario: await SharedPreferenceUtil.getString(Constants.spUsuario),
+        nome: await SharedPreferenceUtil.getString(Constants.spNome),
+      ),
+    );
+    // rotaInicial vai mudar;
+  }
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(MyApp(
+    rotaInicial: rotaInicial,
+  ));
 }
 
 class MyApp extends StatelessWidget {
+  MyApp({Key? key, required this.rotaInicial}) : super(key: key);
+  final String rotaInicial;
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -17,12 +42,11 @@ class MyApp extends StatelessWidget {
       title: 'Login',
       debugShowCheckedModeBanner: false,
       theme: TemaPadrao.get(),
+      routes: Routers.getAll(),
+      initialRoute: rotaInicial,
       supportedLocales: [
         Locale('pt', 'BR'),
       ],
-      home: LoginPage(
-        controller: locator<LoginController>(),
-      ),
     );
   }
 }

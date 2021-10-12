@@ -6,19 +6,21 @@ class UsuarioEntity {
   late String usuario;
   late String senha;
   late int id;
+  late String nome;
 
-  UsuarioEntity({
-    required this.token,
-    required this.usuario,
-    required this.senha,
-    required this.id,
-  });
+  UsuarioEntity(
+      {required this.token,
+      required this.usuario,
+      required this.senha,
+      required this.id,
+      required this.nome});
 
   UsuarioEntity.fromJson(Map<String, dynamic> json) {
     token = json['token'];
     usuario = json['usuario'];
     senha = json['senha'];
     id = json['id'];
+    nome = json['nome'];
   }
 
   Map<String, dynamic> toJson() {
@@ -27,6 +29,7 @@ class UsuarioEntity {
       'usuario': usuario,
       'senha': senha,
       'id': id,
+      'nome': nome,
     };
   }
 
@@ -45,4 +48,9 @@ class UsuarioEntity {
     await SharedPreferenceUtil.setString(Constants.spToken, '');
     await SharedPreferenceUtil.setInt(Constants.spId, 0);
   }
+
+  static Future<bool> ehUsuarioLogadoLocalmente() async =>
+      await SharedPreferenceUtil.getString(Constants.spUsuario) != '' &&
+      await SharedPreferenceUtil.getString(Constants.spSenha) != '' &&
+      await SharedPreferenceUtil.getString(Constants.spToken) != '';
 }

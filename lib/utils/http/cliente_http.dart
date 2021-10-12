@@ -4,6 +4,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/native_imp.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:projetoflutter/utils/http/interceptador/interceptador_dio.dart';
 
 class ClientHttp extends DioForNative {
@@ -17,7 +18,7 @@ class ClientHttp extends DioForNative {
           throw Exception("Erro de conexão");
 
         final options = BaseOptions();
-        options.baseUrl = '';
+        options.baseUrl = dotenv.env['URL_BASE'] ?? '';
         final ClientHttp dio = ClientHttp(options);
         (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
             (HttpClient client) {
