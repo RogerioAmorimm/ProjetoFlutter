@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:projetoflutter/core/login/page/login_page.dart';
 import 'package:projetoflutter/core/usuario/entity/usuario_entity.dart';
@@ -44,6 +45,10 @@ class MyApp extends StatelessWidget {
       theme: TemaPadrao.get(),
       routes: Routers.getAll(),
       initialRoute: rotaInicial,
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
       supportedLocales: [
         Locale('pt', 'BR'),
       ],

@@ -10,6 +10,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return FlutterLogin(
         theme: LoginTheme(primaryColor: Theme.of(context).primaryColor),
         hideForgotPasswordButton: true,
