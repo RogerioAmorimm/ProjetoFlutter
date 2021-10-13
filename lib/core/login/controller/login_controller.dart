@@ -5,7 +5,9 @@ import 'package:projetoflutter/core/exception/validacao_server.dart';
 import 'package:projetoflutter/core/login/service/login_service.dart';
 import 'package:projetoflutter/core/usuario/controller/usuario_controller.dart';
 import 'package:projetoflutter/ioc/service_locator.dart';
+import 'package:projetoflutter/modulos/splash_screen.dart';
 import 'package:projetoflutter/utils/constants.dart';
+import 'package:projetoflutter/utils/routers/custom_route.dart';
 
 part 'login_controller.g.dart';
 
@@ -37,7 +39,8 @@ abstract class _LoginControllerBase with Store {
 
   @action
   void submeterAposAnimacaoCompleta(BuildContext context) {
-    final usuarioLogado = locator<UsuarioController>().getUsuarioLogado();
+    Navigator.of(context).pushReplacement(
+        FadePageRoute(builder: (context) => SplashScreen(), settings: null));
   }
 
   Future<String> _loginUser(LoginData loginData) async {

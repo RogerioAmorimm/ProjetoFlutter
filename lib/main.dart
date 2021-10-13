@@ -11,7 +11,7 @@ import 'components/temas/tema_padrao.dart';
 import 'core/login/page/login_page.dart';
 import 'core/usuario/controller/usuario_controller.dart';
 
-Future<void> main() async {
+Future main() async {
   String rotaInicial = LoginPage.routeName;
   await dotenv.load(fileName: '.env');
   setUpLocator();

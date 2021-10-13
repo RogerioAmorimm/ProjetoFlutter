@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class Constants {
-  static const String spToken = '';
-  static const String spId = '';
-  static const String spUsuario = '';
-  static const String spSenha = '';
-  static const String spNome = '';
+  static const String spToken = 'spToken';
+  static const String spId = 'spId';
+  static const String spUsuario = 'spUsuario';
+  static const String spSenha = 'spSenha';
+  static const String spNome = "spNome";
   static const String mensagemErroInterno = '';
   static const MaterialColor primaria = MaterialColor(0xFF0065AD, {
     50: Color(0xFFE0EDF5),

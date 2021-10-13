@@ -52,5 +52,7 @@ class UsuarioEntity {
   static Future<bool> ehUsuarioLogadoLocalmente() async =>
       await SharedPreferenceUtil.getString(Constants.spUsuario) != '' &&
       await SharedPreferenceUtil.getString(Constants.spSenha) != '' &&
-      await SharedPreferenceUtil.getString(Constants.spToken) != '';
+      await SharedPreferenceUtil.getString(Constants.spToken) != '' &&
+      await SharedPreferenceUtil.getInt(Constants.spId) != 0 &&
+      await SharedPreferenceUtil.getString(Constants.spNome) != '';
 }
