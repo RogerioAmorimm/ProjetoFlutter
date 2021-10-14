@@ -61,11 +61,11 @@ class _DrawerNavegacaoPage extends State<DrawerNavegacaoPage> {
         decoration: const BoxDecoration(color: Constants.primaria),
         child: Stack(children: <Widget>[
           Center(
-            child: Text("header"),
-            // child: Image.asset(
-            //   filterQuality: FilterQuality.high,
-            //   height: 50,
-            // ),
+            child: Image.asset(
+              Constants.logo,
+              filterQuality: FilterQuality.high,
+              height: 50,
+            ),
           ),
         ]));
   }

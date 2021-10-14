@@ -17,7 +17,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin, TransitionRouteAware {
-  static final List<Widget> _widgetOptions = <Widget>[];
+  static final List<Widget> _widgetOptions = <Widget>[
+    Container(),
+    Container(),
+    Container(),
+    Container(),
+    Container(),
+    Container(),
+  ];
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   final routeObserver = TransitionRouteObserver<PageRoute>();
   late AnimationController _loadingController;

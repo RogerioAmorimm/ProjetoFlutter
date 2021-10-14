@@ -1,4 +1,3 @@
-import 'dart:js';
 
 import 'package:flutter/cupertino.dart';
 import 'package:projetoflutter/core/login/controller/login_controller.dart';
