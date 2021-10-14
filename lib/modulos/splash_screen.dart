@@ -1,9 +1,18 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:projetoflutter/components/indicador_processamento.dart';
+import 'package:projetoflutter/ioc/service_locator.dart';
+import 'package:projetoflutter/modulos/home.dart';
 import 'package:projetoflutter/utils/constants.dart';
+import 'package:projetoflutter/utils/http/enum_status_request.dart';
+
+import 'controller/home_controller.dart';
 
 class SplashScreen extends StatefulWidget {
+  static const routerName = '/home-splash';
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
@@ -18,6 +27,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final controller = locator<HomeController>();
+    controller.carregarDadosHome();
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,
@@ -46,10 +57,30 @@ class _SplashScreenState extends State<SplashScreen> {
               SizedBox(
                 height: 10,
               ),
-              Observer(
-                builder: (_){
-                  return Container();
-                })
+              Observer(builder: (_) {
+                if (controller.erroProcessamento != null) {
+                  return erroProcessamentoRetentativaTelaSplash(
+                      controller.erroProcessamento ?? '',
+                      () => {controller.carregarDadosHome()},
+                      context);
+                }
+
+                switch (controller.status) {
+                  case StatusRequest.inicial:
+                    return processandoLogin();
+                  case StatusRequest.processando:
+                    return processandoLogin();
+                  case StatusRequest.finalizado:
+                    Timer(const Duration(seconds: 2), () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HomePage()));
+                    });
+
+                    return processandoLogin();
+                }
+              }),
             ],
           )
         ],

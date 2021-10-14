@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:projetoflutter/components/drawerNavegacao/controller/drawer_navegacao_controller.dart';
 import 'package:projetoflutter/core/login/controller/login_controller.dart';
 import 'package:projetoflutter/core/usuario/controller/usuario_controller.dart';
+import 'package:projetoflutter/modulos/controller/home_controller.dart';
 
 final locator = GetIt.instance;
 void setUpLocator() {
@@ -9,4 +10,5 @@ void setUpLocator() {
   locator.registerSingleton<LoginController>(LoginController());
   locator.registerSingleton<DrawerNavegacaoController>(
       DrawerNavegacaoController());
+  locator.registerSingleton<HomeController>(HomeController());
 }

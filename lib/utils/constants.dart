@@ -7,6 +7,8 @@ class Constants {
   static const String spSenha = 'spSenha';
   static const String spNome = "spNome";
   static const String mensagemErroInterno = '';
+  static const String mensagemErroPadrao = '';
+  static const String mesagemErro = '';
   static const MaterialColor primaria = MaterialColor(0xFF0065AD, {
     50: Color(0xFFE0EDF5),
     100: Color(0xFFB3D1E6),

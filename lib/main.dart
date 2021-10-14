@@ -4,6 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:projetoflutter/core/login/page/login_page.dart';
 import 'package:projetoflutter/core/usuario/entity/usuario_entity.dart';
 import 'package:projetoflutter/ioc/service_locator.dart';
+import 'package:projetoflutter/modulos/splash_screen.dart';
 import 'package:projetoflutter/utils/constants.dart';
 import 'package:projetoflutter/utils/routers/routers.dart';
 import 'package:projetoflutter/utils/sharedPreference/shared_preferences_util.dart';
@@ -25,7 +26,7 @@ Future main() async {
         nome: await SharedPreferenceUtil.getString(Constants.spNome),
       ),
     );
-    // rotaInicial vai mudar;
+    rotaInicial = SplashScreen.routerName;
   }
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp(
