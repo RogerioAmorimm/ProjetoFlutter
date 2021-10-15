@@ -22,6 +22,18 @@ class Constants {
     800: Color(0xFF004993),
     900: Color(0xFF003783),
   });
+  static const MaterialColor primariaContraste = MaterialColor(0xFFFFFFFF, {
+    50: Color(0xFF001E33),
+    100: Color(0xFF001E33),
+    200: Color(0xFF001E33),
+    300: Color(0xFF000000),
+    400: Color(0xFFFFFFFF),
+    500: Color(0xFFFFFFFF),
+    600: Color(0xFFFFFFFF),
+    700: Color(0xFFFFFFFF),
+    800: Color(0xFFFFFFFF),
+    900: Color(0xFFFFFFFF),
+  });
   static const MaterialColor accent = MaterialColor(0xFF81C9FC, {
     50: Color(0xFFF0F9FF),
     100: Color(0xFFD9EFFE),
@@ -33,5 +45,17 @@ class Constants {
     700: Color(0xFF6EBCFB),
     800: Color(0xFF64B5FB),
     900: Color(0xFF51A9FA),
+  });
+  static const MaterialColor accentContraste = MaterialColor(0xFF003783, {
+    50: Color(0xFF003783),
+    100: Color(0xFF003783),
+    200: Color(0xFF003783),
+    300: Color(0xFF003783),
+    400: Color(0xFF003783),
+    500: Color(0xFF003783),
+    600: Color(0xFF001533),
+    700: Color(0xFF001533),
+    800: Color(0xFF001533),
+    900: Color(0xFF001533),
   });
 }

@@ -7,6 +7,8 @@ import 'package:projetoflutter/components/drawerNavegacao/page/drawer_navegacao_
 import 'package:projetoflutter/ioc/service_locator.dart';
 import 'package:projetoflutter/modulos/listaItens/controller/card_controller.dart';
 import 'package:projetoflutter/modulos/listaItens/page/card_page.dart';
+import 'package:projetoflutter/modulos/mensagens/controller/mensagem_controller.dart';
+import 'package:projetoflutter/modulos/mensagens/page/mensagem_page.dart';
 import 'package:projetoflutter/utils/routers/transition_route_observer.dart';
 
 class HomePage extends StatefulWidget {
@@ -23,10 +25,11 @@ class _HomePageState extends State<HomePage>
     CardPage(
       cardController: locator<CardController>(),
     ),
-    Container(),
-    Container(),
-    Container(),
-    Container(),
+    MensagemPage(
+      controller: locator<MensagemController>(),
+      cardComponente: null,
+      controleFiltroMensagemComponente: null,
+    ),
     Container(),
   ];
   final GlobalKey<ScaffoldState> _key = GlobalKey();

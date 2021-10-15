@@ -37,8 +37,8 @@ abstract class _DrawerNavegacaoController with Store {
 
     menusDisponiveis = <ItemMenu>[
       ItemMenu(0, 'Home', Icons.home),
-      ItemMenu(3, 'Mensagens', Icons.message),
-      ItemMenu(4, 'Solicitações', Icons.fact_check),
+      ItemMenu(1, 'Mensagens', Icons.message),
+      ItemMenu(2, 'Solicitações', Icons.fact_check),
     ];
   }
 }
