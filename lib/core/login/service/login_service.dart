@@ -4,6 +4,7 @@ import 'package:projetoflutter/core/usuario/entity/usuario_entity.dart';
 
 class LoginService {
   Future<UsuarioAutenticadoEntity> autenticar(LoginData? loginData) async {
+   //TODO:CONECTAR API
     return UsuarioAutenticadoEntity(
         sucesso: true,
         mensagem: '',

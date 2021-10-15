@@ -6,8 +6,8 @@ class Constants {
   static const String spUsuario = 'spUsuario';
   static const String spSenha = 'spSenha';
   static const String spNome = "spNome";
-  static const String mensagemErroInterno = '';
-  static const String mensagemErroPadrao = '';
+  static const String mensagemErroInterno = 'Erro interno! Tente novamente.';
+  static const String mensagemErroPadrao = 'Erro de processamento';
   static const String mesagemErro = '';
   static const String logo = 'assets/logo.png';
   static const MaterialColor primaria = MaterialColor(0xFF0065AD, {
