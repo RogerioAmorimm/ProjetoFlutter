@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:projetoflutter/components/indicador_processamento.dart';
 import 'package:projetoflutter/ioc/service_locator.dart';
-import 'package:projetoflutter/modulos/home.dart';
+import 'package:projetoflutter/modulos/home/page/home.dart';
 import 'package:projetoflutter/utils/constants.dart';
 import 'package:projetoflutter/utils/http/enum_status_request.dart';
 
-import 'controller/home_controller.dart';
+import 'home/controller/home_controller.dart';
 
 class SplashScreen extends StatefulWidget {
   static const routerName = '/home-splash';

@@ -36,12 +36,9 @@ abstract class _DrawerNavegacaoController with Store {
     selectedindexHome = index;
 
     menusDisponiveis = <ItemMenu>[
-      ItemMenu(0, 'Aluno', Icons.school),
-      ItemMenu(1, 'Frequência', Icons.rule),
-      ItemMenu(2, 'Notas', Icons.calculate),
+      ItemMenu(0, 'Home', Icons.home),
       ItemMenu(3, 'Mensagens', Icons.message),
       ItemMenu(4, 'Solicitações', Icons.fact_check),
-      ItemMenu(5, 'Refeições', Icons.fastfood_sharp),
     ];
   }
 }
