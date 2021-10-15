@@ -78,7 +78,7 @@ mixin _$CardController on _CardControllerBase, Store {
   }
 
   @override
-  List<Widget> listaDeCards() {
+  List<ItemCardPage> listaDeCards() {
     final _$actionInfo = _$_CardControllerBaseActionController.startAction(
         name: '_CardControllerBase.listaDeCards');
     try {

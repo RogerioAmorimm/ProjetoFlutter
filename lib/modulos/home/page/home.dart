@@ -5,6 +5,8 @@ import 'package:projetoflutter/components/AppBar/app_bar_componente.dart';
 import 'package:projetoflutter/components/drawerNavegacao/controller/drawer_navegacao_controller.dart';
 import 'package:projetoflutter/components/drawerNavegacao/page/drawer_navegacao_page.dart';
 import 'package:projetoflutter/ioc/service_locator.dart';
+import 'package:projetoflutter/modulos/listaItens/controller/card_controller.dart';
+import 'package:projetoflutter/modulos/listaItens/page/card_page.dart';
 import 'package:projetoflutter/utils/routers/transition_route_observer.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,7 +20,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin, TransitionRouteAware {
   static final List<Widget> _widgetOptions = <Widget>[
-    Container(),
+    CardPage(
+      cardController: locator<CardController>(),
+    ),
     Container(),
     Container(),
     Container(),

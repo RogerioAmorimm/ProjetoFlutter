@@ -8,6 +8,7 @@ import 'package:projetoflutter/core/exception/validacao_server.dart';
 import 'package:projetoflutter/core/usuario/controller/usuario_controller.dart';
 import 'package:projetoflutter/ioc/service_locator.dart';
 import 'package:projetoflutter/modulos/listaItens/entity/card_entity.dart';
+import 'package:projetoflutter/modulos/listaItens/page/item_card_page.dart';
 import 'package:projetoflutter/modulos/listaItens/service/card_service.dart';
 import 'package:projetoflutter/modulos/listaItens/store/card_store.dart';
 import 'package:projetoflutter/utils/constants.dart';
@@ -76,11 +77,14 @@ abstract class _CardControllerBase with Store {
   }
 
   @action
-  List<Widget> listaDeCards() {
-    final List<Widget> listaRetornro = [];
+  List<ItemCardPage> listaDeCards() {
+    final List<ItemCardPage> listaRetornro = [];
 
     for (final card in cards!) {
-      listaRetornro.add(Container());
+      listaRetornro.add(ItemCardPage(
+        locator<CardController>(),
+        card: card,
+      ));
     }
 
     return listaRetornro;
