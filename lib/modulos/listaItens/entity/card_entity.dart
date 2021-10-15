@@ -1,4 +1,4 @@
-class CardEntity {
+class   CardEntity {
   late String urlFotoPerfil;
   late String nome;
   late int id;
