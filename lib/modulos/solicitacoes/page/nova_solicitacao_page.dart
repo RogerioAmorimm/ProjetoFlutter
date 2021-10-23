@@ -179,7 +179,7 @@ class _NovaSolicitacaoPageState extends State<NovaSolicitacaoPage>
   }
 
   void _voltar() {
-    drawerController.mudarIndex(0);
+    drawerController.mudarIndex(2);
   }
 
   void _salvar() {
@@ -236,7 +236,7 @@ class _NovaSolicitacaoPageState extends State<NovaSolicitacaoPage>
                             controller.limpaTelaDeNovaSolicitacao();
                             mostrarFlushbarSucesso(
                                 context, 'Solicitação enviada com sucesso.');
-                            drawerController.mudarIndex(0);
+                            drawerController.mudarIndex(2);
                           }
                         });
                       }

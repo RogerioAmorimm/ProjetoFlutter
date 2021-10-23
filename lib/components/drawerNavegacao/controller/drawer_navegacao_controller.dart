@@ -29,10 +29,10 @@ abstract class _DrawerNavegacaoController with Store {
   }
 
   void carregueMenus(int index) {
-    if (index <= 5) {
+    if (index <= 3) {
       selectedindex = index;
     }
-
+    
     selectedindexHome = index;
 
     menusDisponiveis = <ItemMenu>[

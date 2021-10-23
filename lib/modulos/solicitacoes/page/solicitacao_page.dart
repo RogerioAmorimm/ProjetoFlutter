@@ -100,7 +100,7 @@ class _SolicitacaoPageState extends State<SolicitacaoPage>
                 Icons.add,
               ),
               onPressed: () {
-                drawerController.mudarIndex(6);
+                drawerController.mudarIndex(3);
               },
             ),
           ),

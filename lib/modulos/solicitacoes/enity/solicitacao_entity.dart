@@ -7,7 +7,7 @@ class SolicitacaoEntity {
   late String dataSolicitacao;
   late String status;
   late String solicitante;  
-  late int solicitanteId;
+  late String solicitanteId;
   late String motivo;
 
 

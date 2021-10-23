@@ -28,8 +28,8 @@ class MensagemService {
   ];
   Future<List<Mensagens>> getTodasMensagens(int id, int page) async {
     try {
-      final client = await ClientHttp.getClient();
-      final response = await client.get('');
+      // final client = await ClientHttp.getClient();
+      // final response = await client.get('');
       final mensagens = <Mensagens>[];
       msgMock.forEach((v) {
         mensagens.add(Mensagens.fromJson(v));
@@ -51,8 +51,8 @@ class MensagemService {
     int page,
   ) async {
     try {
-      final client = await ClientHttp.getClient();
-      final response = await client.get('');
+      // final client = await ClientHttp.getClient();
+      // final response = await client.get('');
       final mensagens = <Mensagens>[];
       msgMock.forEach((v) {
         mensagens.add(Mensagens.fromJson(v));
@@ -76,14 +76,14 @@ class MensagemService {
         id,
         mensagem,
       ).toJson();
-      final client = await ClientHttp.getClient();
-      final response = await client.post('', data: parametro);
-      final mensagemEntity = MensagemEntity.fromJson(response.data);
+      // final client = await ClientHttp.getClient();
+      // final response = await client.post('', data: parametro);
+      // final mensagemEntity = MensagemEntity.fromJson(response.data);
       final mensagens = <Mensagens>[];
       msgMock.forEach((v) {
         mensagens.add(Mensagens.fromJson(v));
       });
-      return mensagemEntity.mensagens ?? mensagens;
+      return mensagens;
     } on DioError catch (error, _) {
       throw ValidacaoServer.fromMap(error.response!.data);
     } on Exception {
