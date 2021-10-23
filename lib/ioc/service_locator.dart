@@ -7,6 +7,9 @@ import 'package:projetoflutter/modulos/listaItens/service/card_service.dart';
 import 'package:projetoflutter/modulos/listaItens/store/card_store.dart';
 import 'package:projetoflutter/modulos/mensagens/controller/mensagem_controller.dart';
 import 'package:projetoflutter/modulos/mensagens/service/mensagem_service.dart';
+import 'package:projetoflutter/modulos/solicitacoes/controller/nova_solicitacao_controller.dart';
+import 'package:projetoflutter/modulos/solicitacoes/controller/solicitacao_controller.dart';
+import 'package:projetoflutter/modulos/solicitacoes/service/solicitacao_service.dart';
 
 final locator = GetIt.instance;
 void setUpLocator() {
@@ -19,4 +22,8 @@ void setUpLocator() {
   locator.registerSingleton<CardStore>(CardStore());
   locator.registerSingleton<MensagemService>(MensagemService());
   locator.registerSingleton<MensagemController>(MensagemController());
+  locator.registerSingleton<SolicitacaoService>(SolicitacaoService());
+  locator.registerSingleton<NovaSolicitacaoController>(
+      NovaSolicitacaoController());
+  locator.registerSingleton<SolicitacaoController>(SolicitacaoController());
 }
