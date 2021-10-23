@@ -9,6 +9,8 @@ import 'package:projetoflutter/modulos/listaItens/controller/card_controller.dar
 import 'package:projetoflutter/modulos/listaItens/page/card_page.dart';
 import 'package:projetoflutter/modulos/mensagens/controller/mensagem_controller.dart';
 import 'package:projetoflutter/modulos/mensagens/page/mensagem_page.dart';
+import 'package:projetoflutter/modulos/solicitacoes/controller/solicitacao_controller.dart';
+import 'package:projetoflutter/modulos/solicitacoes/page/solicitacao_page.dart';
 import 'package:projetoflutter/utils/routers/transition_route_observer.dart';
 
 class HomePage extends StatefulWidget {
@@ -30,7 +32,7 @@ class _HomePageState extends State<HomePage>
       cardComponente: null,
       controleFiltroMensagemComponente: null,
     ),
-    Container(),
+    SolicitacaoPage(solicitacaoController: locator<SolicitacaoController>()),
   ];
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   final routeObserver = TransitionRouteObserver<PageRoute>();

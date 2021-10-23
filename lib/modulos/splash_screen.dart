@@ -3,13 +3,13 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:lottie/lottie.dart';
 import 'package:projetoflutter/components/indicador_processamento.dart';
 import 'package:projetoflutter/ioc/service_locator.dart';
 import 'package:projetoflutter/modulos/home/page/home.dart';
+import 'package:projetoflutter/modulos/listaItens/controller/card_controller.dart';
 import 'package:projetoflutter/utils/constants.dart';
 import 'package:projetoflutter/utils/http/enum_status_request.dart';
-
-import 'home/controller/home_controller.dart';
 
 class SplashScreen extends StatefulWidget {
   static const routerName = '/home-splash';
@@ -27,8 +27,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final controller = locator<HomeController>();
-    controller.carregarDadosHome();
+    final controller = locator<CardController>();
+    controller.carregaCards();
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,
@@ -41,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
             children: [
               Center(
                 child: Container(
-                  child: Text("TESTE APENAS"),
+                  child: Lottie.asset('assets/json/splash.json'),
                 ),
               ),
               SizedBox(
@@ -61,7 +61,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 if (controller.erroProcessamento != null) {
                   return erroProcessamentoRetentativaTelaSplash(
                       controller.erroProcessamento ?? '',
-                      () => {controller.carregarDadosHome()},
+                      () => {controller.carregaCards()},
                       context);
                 }
 
@@ -72,10 +72,8 @@ class _SplashScreenState extends State<SplashScreen> {
                     return processandoLogin();
                   case StatusRequest.finalizado:
                     Timer(const Duration(seconds: 2), () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomePage()));
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => HomePage()));
                     });
 
                     return processandoLogin();

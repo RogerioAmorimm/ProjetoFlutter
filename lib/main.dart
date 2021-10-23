@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -35,7 +36,7 @@ Future main() async {
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({Key? key, required this.rotaInicial}) : super(key: key);
+  MyApp({@required this.rotaInicial, Key key}) : super(key: key);
   final String rotaInicial;
   // This widget is the root of your application.
   @override
