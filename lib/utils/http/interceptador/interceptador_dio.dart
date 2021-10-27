@@ -4,6 +4,7 @@ import 'package:dio/native_imp.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:projetoflutter/core/login/controller/login_controller.dart';
+import 'package:projetoflutter/core/login/service/login_service.dart';
 import 'package:projetoflutter/core/usuario/controller/usuario_controller.dart';
 import 'package:projetoflutter/core/usuario/entity/usuario_entity.dart';
 import 'package:projetoflutter/ioc/service_locator.dart';
@@ -39,7 +40,7 @@ class InterceptadorDio extends InterceptorsWrapper {
       final usuario = _getUsuario();
       if (usuario != null &&
           err.response!.statusCode == 401 &&
-          usuario.senha != '') {
+          usuario.token != '') {
         final options = err.response!.requestOptions;
 
         if (usuario.token == options.headers['Authorization']) {
@@ -50,12 +51,11 @@ class InterceptadorDio extends InterceptorsWrapper {
         dio.interceptors.responseLock.lock();
         dio.interceptors.errorLock.lock();
 
-        final loginController = locator<LoginController>();
-        return loginController
-            .logar(LoginData(name: usuario.email, password: usuario.senha))
-            .then(
+        final loginService = locator<LoginService>();
+        return loginService.refreshToken().then(
           (result) {
-            final _newToken = usuario.token;
+            final usuario = _getUsuario();
+            final _newToken = usuario!.token;
 
             if (_newToken.isNotEmpty) {
               final headerAuth = _getToken(_newToken);
