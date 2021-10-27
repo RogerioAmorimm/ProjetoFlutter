@@ -10,10 +10,12 @@ import 'package:projetoflutter/modulos/mensagens/service/mensagem_service.dart';
 import 'package:projetoflutter/modulos/solicitacoes/controller/nova_solicitacao_controller.dart';
 import 'package:projetoflutter/modulos/solicitacoes/controller/solicitacao_controller.dart';
 import 'package:projetoflutter/modulos/solicitacoes/service/solicitacao_service.dart';
+import 'package:projetoflutter/utils/http/cliente_http.dart';
 
 final locator = GetIt.instance;
 void setUpLocator() {
   locator.registerSingleton<UsuarioController>(UsuarioController());
+  locator.registerSingleton<ClientHttp>(ClientHttp());
   locator.registerSingleton<LoginController>(LoginController());
   locator.registerSingleton<DrawerNavegacaoController>(
       DrawerNavegacaoController());

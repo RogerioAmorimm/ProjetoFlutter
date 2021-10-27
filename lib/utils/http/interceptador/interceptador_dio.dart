@@ -52,7 +52,7 @@ class InterceptadorDio extends InterceptorsWrapper {
 
         final loginController = locator<LoginController>();
         return loginController
-            .logar(LoginData(name: usuario.usuario, password: usuario.senha))
+            .logar(LoginData(name: usuario.email, password: usuario.senha))
             .then(
           (result) {
             final _newToken = usuario.token;

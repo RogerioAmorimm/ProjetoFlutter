@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Constants {
   static const String spToken = 'spToken';
   static const String spId = 'spId';
-  static const String spUsuario = 'spUsuario';
+  static const String spEmail = 'spEmail';
   static const String spSenha = 'spSenha';
   static const String spNome = "spNome";
   static const String mensagemErroInterno = 'Erro interno! Tente novamente.';

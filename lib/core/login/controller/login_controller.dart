@@ -49,7 +49,7 @@ abstract class _LoginControllerBase with Store {
       final resposta = await LoginService().autenticar(loginData);
 
       if (!resposta.sucesso) {
-        return resposta.mensagem;
+        return resposta.errors.first;
       }
 
       await locator<UsuarioController>()

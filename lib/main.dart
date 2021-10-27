@@ -21,9 +21,9 @@ Future main() async {
     await locator<UsuarioController>().setUsuarioLogado(
       UsuarioEntity(
         token: await SharedPreferenceUtil.getString(Constants.spToken),
-        id: await SharedPreferenceUtil.getInt(Constants.spId),
+        id: await SharedPreferenceUtil.getString(Constants.spId),
         senha: await SharedPreferenceUtil.getString(Constants.spSenha),
-        usuario: await SharedPreferenceUtil.getString(Constants.spUsuario),
+        email: await SharedPreferenceUtil.getString(Constants.spEmail),
         nome: await SharedPreferenceUtil.getString(Constants.spNome),
       ),
     );

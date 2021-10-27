@@ -7,7 +7,7 @@ final jsonMock = [
 ];
 
 class CardService {
-  Future<List<CardEntity>> getCardPorId(int id) async {
+  Future<List<CardEntity>> getCardPorId(String id) async {
     final cards = <CardEntity>[];
     jsonMock.forEach((element) {
       cards.add(CardEntity.fromJson(element));

@@ -2,19 +2,19 @@ import 'package:projetoflutter/core/usuario/entity/usuario_entity.dart';
 
 class UsuarioAutenticadoEntity {
   late bool sucesso;
-  late String mensagem;
+  late List<String> errors;
   late UsuarioEntity? usuarioAutenticado;
   UsuarioAutenticadoEntity({
     required this.sucesso,
-    required this.mensagem,
+    required this.errors,
     required this.usuarioAutenticado,
   });
 
   UsuarioAutenticadoEntity.fromJson(Map<String, dynamic> json) {
     sucesso = json['sucesso'];
-    mensagem = json['mensagem'];
-    if (json['usuarioAutenticado'] != null) {
-      usuarioAutenticado = UsuarioEntity.fromJson(json['usuarioAutenticado']);
+    errors = json['errors'];
+    if (json['data'] != null) {
+      usuarioAutenticado = UsuarioEntity.fromJson(json['data']);
     } else {
       usuarioAutenticado = null;
     }
@@ -23,7 +23,7 @@ class UsuarioAutenticadoEntity {
   Map<String, dynamic> toJson() {
     return {
       'sucesso': sucesso,
-      'mensagem': mensagem,
+      'errors': errors,
       if (usuarioAutenticado != null) 'usuarioAutenticado': usuarioAutenticado,
     };
   }
