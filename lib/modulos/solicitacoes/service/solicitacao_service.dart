@@ -3,7 +3,6 @@ import 'package:projetoflutter/core/exception/validacao_server.dart';
 import 'package:projetoflutter/modulos/solicitacoes/enity/nova_solicitacao_entity.dart';
 import 'package:projetoflutter/modulos/solicitacoes/enity/solicitacao_entity.dart';
 import 'package:projetoflutter/modulos/solicitacoes/enity/tipos_de_solicitacao_entity.dart';
-import 'package:projetoflutter/utils/http/cliente_http.dart';
 
 final mockSolicatacoes = [
   {
