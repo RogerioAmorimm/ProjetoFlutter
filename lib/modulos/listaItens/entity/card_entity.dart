@@ -1,7 +1,7 @@
 class   CardEntity {
   late String urlFotoPerfil;
   late String nome;
-  late int id;
+  late String id;
 
   CardEntity({
     required this.urlFotoPerfil,
@@ -12,14 +12,14 @@ class   CardEntity {
   CardEntity.fromJson(Map<String, dynamic> json) {
     nome = json['nome'];
     urlFotoPerfil = json['foto'];
-    id = json['id'];
+    id = json['usuario'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['nome'] = nome;
     data['foto'] = urlFotoPerfil;
-    data['id'] = id;
+    data['idUsuario'] = id;
     return data;
   }
 }

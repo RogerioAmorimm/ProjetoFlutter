@@ -88,7 +88,6 @@ class _MensagemPageState extends State<MensagemPage>
                     builderDelegate: PagedChildBuilderDelegate<Mensagens>(
                       itemBuilder: (context, item, index) {
                         return MensagemCard(
-                          data: item.dataHora,
                           mensagem: item.mensagem,
                           origem: item.usuario,
                         );
@@ -110,10 +109,12 @@ class _MensagemPageState extends State<MensagemPage>
       controller.adicionarNovaMensagem().then((_) {
         mensagemSendoEnviada = false;
         controller.textEditingController.clear();
+        // controller.pagingController.refresh();
         FocusScope.of(context).unfocus();
       }).catchError((_) {
         mensagemSendoEnviada = false;
       });
+
     });
   }
 
@@ -127,9 +128,6 @@ class _MensagemPageState extends State<MensagemPage>
           Expanded(
             child: TextField(
               controller: controller.textEditingController,
-              onEditingComplete: () {
-                envieMensagem(controller);
-              },
               decoration: InputDecoration(
                 contentPadding:
                     const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
@@ -144,9 +142,6 @@ class _MensagemPageState extends State<MensagemPage>
                   fontSize: ViewPortUtil(context).propriedades.tamanhoFonte,
                   color: Constants.primaria.shade900),
               onSubmitted: (_) {
-                setState(() {
-                  mensagemSendoEnviada = false;
-                });
                 if (!mensagemSendoEnviada) {
                   envieMensagem(controller);
                 }

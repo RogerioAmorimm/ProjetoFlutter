@@ -1,41 +1,24 @@
 import 'package:dio/dio.dart';
 import 'package:projetoflutter/core/exception/validacao_server.dart';
+import 'package:projetoflutter/ioc/service_locator.dart';
+import 'package:projetoflutter/modulos/listaItens/store/card_store.dart';
 import 'package:projetoflutter/modulos/mensagens/enity/enviar_mensagem_entity.dart';
-import 'package:projetoflutter/modulos/mensagens/enity/mensagem_entity.dart';
 import 'package:projetoflutter/modulos/mensagens/enity/mensagens_entity.dart';
 import 'package:projetoflutter/utils/http/cliente_http.dart';
 
 class MensagemService {
-  final msgMock = [
-    {
-      'id': 1,
-      'usuario': 'Rogério',
-      'mensagem': 'testestestedadadajdada',
-      'dataHora': DateTime.now().toString()
-    },
-    {
-      'id': 2,
-      'usuario': 'Teste-1',
-      'mensagem': 'testestestedadadajdada',
-      'dataHora': DateTime.now().toString()
-    },
-    {
-      'id': 3,
-      'usuario': 'Teste-2',
-      'mensagem': 'testestestedadadajdada',
-      'dataHora': DateTime.now().toString()
-    },
-  ];
-  Future<List<Mensagens>> getTodasMensagens(int id, int page) async {
+  Future<List<Mensagens>> getTodasMensagens(
+      String remetenteId, String destinatarioId, int page) async {
     try {
-      // final client = await ClientHttp.getClient();
-      // final response = await client.get('');
+      final client = await ClientHttp.getClient();
+      final response = await client
+          .get('Mensagem/getTodasMensagens/$remetenteId/$destinatarioId/$page');
       final mensagens = <Mensagens>[];
-      msgMock.forEach((v) {
-        mensagens.add(Mensagens.fromJson(v));
-      });
-
-      return mensagens;
+      if (response.data['data'] != null)
+        response.data['data'].forEach((v) {
+          mensagens.add(Mensagens.fromJson(v));
+        });
+      return mensagens.reversed.toList();
     } on DioError catch (error, _) {
       throw ValidacaoServer.fromMap(error.response!.data);
     } on Exception {
@@ -45,19 +28,19 @@ class MensagemService {
     }
   }
 
-  Future<List<Mensagens>> getTodasMensagensPorFiltro(
-    int id,
-    String filtro,
-    int page,
-  ) async {
+  Future<List<Mensagens>> getTodasMensagensPorFiltro(String remetenteId,
+      String destinatarioId, int page, String filtro) async {
     try {
-      // final client = await ClientHttp.getClient();
-      // final response = await client.get('');
+      final client = await ClientHttp.getClient();
+      final response = await client.get(
+          'Mensagem/getTodasMensagensPorFiltro/$remetenteId/$destinatarioId/$page/$filtro');
+
       final mensagens = <Mensagens>[];
-      msgMock.forEach((v) {
-        mensagens.add(Mensagens.fromJson(v));
-      });
-      return mensagens;
+      if (response.data['data']!=null)
+        response.data['data'].forEach((v) {
+          mensagens.add(Mensagens.fromJson(v));
+        });
+      return mensagens.reversed.toList();
     } on DioError catch (error, _) {
       throw ValidacaoServer.fromMap(error.response!.data);
     } on Exception {
@@ -67,23 +50,15 @@ class MensagemService {
     }
   }
 
-  Future<List<Mensagens>> enviarMensagem(
-    int id,
-    String mensagem,
-  ) async {
+  Future enviarMensagem(String remetenteId, String mensagem) async {
     try {
       final parametro = EnviarMensagemEntity(
-        id,
+        remetenteId,
         mensagem,
+        locator<CardStore>().getCard()!.id,
       ).toJson();
-      // final client = await ClientHttp.getClient();
-      // final response = await client.post('', data: parametro);
-      // final mensagemEntity = MensagemEntity.fromJson(response.data);
-      final mensagens = <Mensagens>[];
-      msgMock.forEach((v) {
-        mensagens.add(Mensagens.fromJson(v));
-      });
-      return mensagens;
+      final client = await ClientHttp.getClient();
+      await client.post('Mensagem/enviarMensagem', data: parametro);
     } on DioError catch (error, _) {
       throw ValidacaoServer.fromMap(error.response!.data);
     } on Exception {

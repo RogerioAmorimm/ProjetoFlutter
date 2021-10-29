@@ -1,5 +1,5 @@
 class NovaSolicitacaoEntity {
-  late int id;
+  late String id;
   late String tipoSolicitacaoId;
   late String solicitanteId;
   late String motivo;

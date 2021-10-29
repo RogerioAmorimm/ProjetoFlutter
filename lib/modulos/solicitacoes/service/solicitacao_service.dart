@@ -41,7 +41,7 @@ final mockTiposSolicatacoes = [
 ];
 
 class SolicitacaoService {
-  Future<List<SolicitacaoEntity>> getUltimasDezSolicitacoes(int id) async {
+  Future<List<SolicitacaoEntity>> getUltimasDezSolicitacoes(String id) async {
     try {
       // final client = await ClientHttp.getClient();
       // final response = await client.get('');

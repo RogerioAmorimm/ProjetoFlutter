@@ -2,8 +2,6 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:dio/native_imp.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_login/flutter_login.dart';
-import 'package:projetoflutter/core/login/controller/login_controller.dart';
 import 'package:projetoflutter/core/login/service/login_service.dart';
 import 'package:projetoflutter/core/usuario/controller/usuario_controller.dart';
 import 'package:projetoflutter/core/usuario/entity/usuario_entity.dart';

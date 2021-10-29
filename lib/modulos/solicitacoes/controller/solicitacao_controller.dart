@@ -42,7 +42,7 @@ abstract class _SolicitacaoControllerBase with Store {
       solicitacoesObservable = ObservableFuture(
         Future.value(
           await service.getUltimasDezSolicitacoes(
-            cardStore.getCard()?.id ?? 0,
+            cardStore.getCard()?.id ?? '',
           ),
         ),
       );

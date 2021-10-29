@@ -1,7 +1,4 @@
-import 'dart:io';
-
 import 'package:connectivity/connectivity.dart';
-import 'package:dio/adapter.dart';
 import 'package:dio/adapter_browser.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/native_imp.dart';
@@ -23,13 +20,6 @@ class ClientHttp extends DioForNative {
         options.baseUrl = dotenv.env['URL_BASE'] ?? '';
         final ClientHttp dio = ClientHttp(options);
         dio.httpClientAdapter = BrowserHttpClientAdapter();
-         
-        // (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
-        //     (HttpClient client) {
-        //   client.badCertificateCallback =
-        //       (X509Certificate cert, String host, int port) => true;
-        //   return client;
-        // };
         return dio;
       }).catchError((e) => throw e);
 }

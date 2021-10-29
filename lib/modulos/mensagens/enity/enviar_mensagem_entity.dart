@@ -1,21 +1,25 @@
 class EnviarMensagemEntity {
-  late int id;
+  late String remetenteId;
   late String mensagem;
+  late String destinatarioId;
 
   EnviarMensagemEntity(
-    this.id,
+    this.remetenteId,
     this.mensagem,
+    this.destinatarioId
   );
 
   EnviarMensagemEntity.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    remetenteId = json['remetenteId'];
     mensagem = json['mensagem'];
+    destinatarioId = json['destinatarioId'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
+    data['remetenteId'] = remetenteId;
     data['mensagem'] = mensagem;
+    data['destinatarioId'] = destinatarioId;
     return data;
   }
 }

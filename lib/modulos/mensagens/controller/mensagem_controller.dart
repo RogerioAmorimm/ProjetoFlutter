@@ -3,6 +3,7 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:mobx/mobx.dart';
 import 'package:projetoflutter/core/exception/gerenciador_erro.dart';
 import 'package:projetoflutter/core/exception/validacao_server.dart';
+import 'package:projetoflutter/core/usuario/controller/usuario_controller.dart';
 import 'package:projetoflutter/ioc/service_locator.dart';
 import 'package:projetoflutter/modulos/listaItens/store/card_store.dart';
 import 'package:projetoflutter/modulos/mensagens/enity/mensagens_entity.dart';
@@ -18,14 +19,15 @@ class MensagemController extends _MensagemControllerBase
 abstract class _MensagemControllerBase with Store {
   final PagingController<int, Mensagens> pagingController =
       PagingController(firstPageKey: 1);
-  static const pageSize = 20;
+  static const pageSize = 10;
 
   @action
   void initPaginacao() {
-    // ignore: unnecessary_lambdas
+    // ignore: unnecessary_lambdas 
     pagingController.addPageRequestListener((pageKey) {
       _fetchPage(pageKey);
     });
+    
   }
 
   @action
@@ -79,14 +81,13 @@ abstract class _MensagemControllerBase with Store {
     try {
       final service = locator<MensagemService>();
       final cardsStore = locator<CardStore>();
+      final usuarioLogado = locator<UsuarioController>().getUsuarioLogado()!;
       if (filtroDeTexto != '') {
         return await service.getTodasMensagensPorFiltro(
-          cardsStore.getCard()!.id,
-          filtroDeTexto,
-          page,
-        );
+            usuarioLogado.id, cardsStore.getCard()!.id, page, filtroDeTexto);
       } else {
         return await service.getTodasMensagens(
+          usuarioLogado.id,
           cardsStore.getCard()!.id,
           page,
         );
@@ -106,9 +107,9 @@ abstract class _MensagemControllerBase with Store {
     try {
       if (textEditingController.text.isNotEmpty) {
         final service = locator<MensagemService>();
-        final cardsStore = locator<CardStore>();
+        final usuarioLogado = locator<UsuarioController>().getUsuarioLogado();
         await service.enviarMensagem(
-          cardsStore.getCard()!.id,
+          usuarioLogado!.id,
           textEditingController.text,
         );
         textEditingController.text = '';

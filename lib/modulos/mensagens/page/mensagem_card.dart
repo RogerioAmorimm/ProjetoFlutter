@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:projetoflutter/core/usuario/controller/usuario_controller.dart';
+import 'package:projetoflutter/ioc/service_locator.dart';
+import 'package:projetoflutter/modulos/listaItens/store/card_store.dart';
 import 'package:projetoflutter/utils/constants.dart';
 import 'package:projetoflutter/utils/responsividade/responsividade_util.dart';
 import 'package:projetoflutter/utils/responsividade/view_port_util.dart';
 
 class MensagemCard extends StatelessWidget {
-  final DateTime data;
   final String mensagem;
   final String origem;
   const MensagemCard({
-    required this.data,
     required this.mensagem,
     required this.origem,
     Key? key,
@@ -17,11 +17,9 @@ class MensagemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dataFormatada = DateFormat('dd/MM/yyyy kk:mm').format(data);
-
     final double paddingBaseDaTela =
         ResponsividadeUtil.getValorPaddingTela(context);
-
+    final usuarioLogado = locator<UsuarioController>().getUsuarioLogado()!;
     return Padding(
       padding: EdgeInsets.only(right: paddingBaseDaTela, left: 36, bottom: 4),
       child: Card(
@@ -39,7 +37,9 @@ class MensagemCard extends StatelessWidget {
                       padding: const EdgeInsets.only(bottom: 8),
                       child: Text(
                         mensagem,
-                        textAlign: TextAlign.left,
+                        textAlign: usuarioLogado.id == origem
+                            ? TextAlign.right
+                            : TextAlign.left,
                         style: TextStyle(
                           fontSize:
                               ViewPortUtil(context).propriedades.tamanhoFonte,
@@ -51,10 +51,14 @@ class MensagemCard extends StatelessWidget {
                 ],
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: usuarioLogado.id == origem
+                    ? MainAxisAlignment.end
+                    : MainAxisAlignment.start,
                 children: [
                   Text(
-                    dataFormatada,
+                    usuarioLogado.id == origem
+                        ? locator<CardStore>().getCard()!.nome
+                        : usuarioLogado.nome,
                     style: TextStyle(
                         fontSize:
                             ViewPortUtil(context).propriedades.tamanhoFonte *

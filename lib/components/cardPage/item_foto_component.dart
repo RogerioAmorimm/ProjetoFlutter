@@ -17,7 +17,7 @@ class ItemFotoComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final basefoto = base64.decode(url);
+    // final basefoto = base64.decode(url);
     BorderRadius? borda = bordaImagem;
     borda ??= BorderRadius.circular(0);
     const alturaPadraoDaImagem = 320;
@@ -36,16 +36,16 @@ class ItemFotoComponent extends StatelessWidget {
                 children: <Widget>[
                   Container(
                     width: double.maxFinite,
-                    child: Image.memory(
-                      basefoto,
+                    child: Image.network(
+                      url,
                       fit: BoxFit.fill,
                     ),
                   ),
                   BackdropFilter(
                     filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
                     child: ClipRRect(
-                      child: Image.memory(
-                        basefoto,
+                      child: Image.network(
+                        url,
                         scale: proporcaoDaImagem,
                         fit: BoxFit.fitHeight,
                       ),
