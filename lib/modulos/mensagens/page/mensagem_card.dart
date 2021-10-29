@@ -57,8 +57,8 @@ class MensagemCard extends StatelessWidget {
                 children: [
                   Text(
                     usuarioLogado.id == origem
-                        ? locator<CardStore>().getCard()!.nome
-                        : usuarioLogado.nome,
+                        ? usuarioLogado.nome
+                        : locator<CardStore>().getCard()!.nome,
                     style: TextStyle(
                         fontSize:
                             ViewPortUtil(context).propriedades.tamanhoFonte *

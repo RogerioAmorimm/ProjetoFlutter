@@ -46,13 +46,13 @@ class UsuarioEntity {
     await SharedPreferenceUtil.setString(Constants.spEmail, '');
     await SharedPreferenceUtil.setString(Constants.spSenha, '');
     await SharedPreferenceUtil.setString(Constants.spToken, '');
-    await SharedPreferenceUtil.setInt(Constants.spId, 0);
+    await SharedPreferenceUtil.setString(Constants.spId, '');
   }
 
   static Future<bool> ehUsuarioLogadoLocalmente() async =>
       await SharedPreferenceUtil.getString(Constants.spEmail) != '' &&
       await SharedPreferenceUtil.getString(Constants.spSenha) != '' &&
       await SharedPreferenceUtil.getString(Constants.spToken) != '' &&
-      await SharedPreferenceUtil.getInt(Constants.spId) != 0 &&
+      await SharedPreferenceUtil.getString(Constants.spId) != '' &&
       await SharedPreferenceUtil.getString(Constants.spNome) != '';
 }

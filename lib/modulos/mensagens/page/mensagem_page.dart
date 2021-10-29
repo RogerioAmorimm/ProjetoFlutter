@@ -109,7 +109,6 @@ class _MensagemPageState extends State<MensagemPage>
       controller.adicionarNovaMensagem().then((_) {
         mensagemSendoEnviada = false;
         controller.textEditingController.clear();
-        // controller.pagingController.refresh();
         FocusScope.of(context).unfocus();
       }).catchError((_) {
         mensagemSendoEnviada = false;

@@ -1,5 +1,6 @@
 // @dart=2.9
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:projetoflutter/core/login/page/login_page.dart';
@@ -14,6 +15,12 @@ import 'core/login/page/login_page.dart';
 import 'core/usuario/controller/usuario_controller.dart';
 
 Future main() async {
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      systemNavigationBarColor:
+          SystemUiOverlayStyle.dark.systemNavigationBarColor,
+    ),
+  );
   String rotaInicial = LoginPage.routeName;
   await dotenv.load(fileName: '.env');
   setUpLocator();
@@ -30,6 +37,8 @@ Future main() async {
     rotaInicial = SplashScreen.routerName;
   }
   WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(MyApp(
     rotaInicial: rotaInicial,
   ));

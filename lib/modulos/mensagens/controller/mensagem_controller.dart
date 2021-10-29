@@ -17,17 +17,17 @@ class MensagemController extends _MensagemControllerBase
     with _$MensagemController {}
 
 abstract class _MensagemControllerBase with Store {
-  final PagingController<int, Mensagens> pagingController =
+  late PagingController<int, Mensagens> pagingController =
       PagingController(firstPageKey: 1);
   static const pageSize = 10;
 
   @action
   void initPaginacao() {
-    // ignore: unnecessary_lambdas 
+    // ignore: unnecessary_lambdas
+    pagingController = PagingController(firstPageKey: 1);
     pagingController.addPageRequestListener((pageKey) {
       _fetchPage(pageKey);
     });
-    
   }
 
   @action
